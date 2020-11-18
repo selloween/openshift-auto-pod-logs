@@ -1,6 +1,13 @@
 #!/bin/bash
 source "/opt/ocp/logs/${1}-token.sh"
 
+if [ -f "/opt/ocp/logs/${1}-token.sh" ]; then
+  echo "Token exists"
+else
+  echo "Token /opt/ocp/logs/${1}-token.sh is missing!"
+  exit 1
+fi
+
 OC_PROJECT=$1
 BASE_DIR="/opt/ocp/logs"
 TAR="${OC_PROJECT}-logs.tar.gz"
